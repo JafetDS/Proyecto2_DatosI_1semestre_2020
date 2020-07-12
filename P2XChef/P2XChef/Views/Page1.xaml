@@ -4,17 +4,32 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             BindingContext="{Binding Main,Source={StaticResource Locator}}"
-             Title="Iniciio"
+             BindingContext="{Binding Main, Source={StaticResource  Locator }}"
              x:Class="P2XChef.Views.Page1">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Prueba 1"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-           
-            
-            <Button Text="Siguente"/>
-        </StackLayout>
+        <ScrollView BindingContext="{Binding Login}">
+            <StackLayout>
+                <Label Text="Bienvenido"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand">
+                </Label>
+                
+                <Entry 
+                Text ="{Binding Nombre,Mode=TwoWay}">
+                </Entry>
+                
+                <Switch IsToggled="{Binding IsRemembered,Mode=TwoWay}">
+                </Switch>
+
+                <Button 
+                Text=" Siguiente"
+                Command="{Binding LoginCommand , Mode=TwoWay}">
+                </Button>
+                
+                <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}"></ActivityIndicator>
+                
+            </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>
