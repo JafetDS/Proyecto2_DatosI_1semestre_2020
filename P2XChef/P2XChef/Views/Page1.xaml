@@ -15,18 +15,33 @@
                 </Label>
                 
                 <Entry 
-                Text ="{Binding Nombre,Mode=TwoWay}">
+                    Text ="{Binding Nombre,Mode=TwoWay}">
+                </Entry>
+                
+                <Entry
+                    Text="{Binding Email,Mode=TwoWay}">
                 </Entry>
                 
                 <Switch IsToggled="{Binding IsRemembered,Mode=TwoWay}">
                 </Switch>
 
                 <Button 
-                Text=" Siguiente"
-                Command="{Binding LoginCommand , Mode=TwoWay}">
+                    Text=" Verificar"
+                    Command="{Binding LoginCommand , Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabled,Mode=TwoWay}">
+                    
+                </Button>
+
+                <Button
+                    Command="{Binding LoginAplication , Mode=TwoWay}"
+                    Text=" Siguiente">
                 </Button>
                 
-                <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}"></ActivityIndicator>
+
+                <ActivityIndicator 
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabled,Mode=TwoWay}">
+                </ActivityIndicator>
                 
             </StackLayout>
         </ScrollView>
