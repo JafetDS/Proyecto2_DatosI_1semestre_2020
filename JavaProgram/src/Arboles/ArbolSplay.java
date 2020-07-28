@@ -1,10 +1,14 @@
 package Arboles;
 
-public class ArbolSplay {
+public class ArbolSplay<T extends Comparable<? super T>> {
     private NodoSpaly root;
 
     public ArbolSplay() {
-        root = null;
+        this.root = null;
+    }
+
+    public Comparable findroot(){
+        return this.root.key;
     }
 
     public void insert(Comparable key) {
@@ -77,7 +81,8 @@ public class ArbolSplay {
         return root == null;
     }
 
-    private void moveToRoot(Comparable key) {
+
+    public void moveToRoot(Comparable key) {
         NodoSpaly l, r, t, y;
         l = r = header;
         t = root;
@@ -121,7 +126,7 @@ public class ArbolSplay {
      *   in the delete() method.
      */
 
-    private void splay(Comparable key) {
+    public void splay(Comparable key) {
         NodoSpaly l, r, t, y;
         l = r = header;
         t = root;

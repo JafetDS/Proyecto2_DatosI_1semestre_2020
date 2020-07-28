@@ -1,18 +1,31 @@
 package Arboles;
 
-public class ArbolAVL {
+public class ArbolAVL<T extends Comparable<? super T>>{
+    private NodoAVL root;
+
+    public ArbolAVL() {
+        this.root = null;
+    }
 
     private int height(NodoAVL t) {
         return t == null ? -1 : t.height;
     }
 
-    private NodoAVL insert(int x, NodoAVL t) {
+    public Comparable findroot(){
+        return this.root.element;
+    }
+
+    public void insert(Comparable x){
+        this.root = this.insert(x, this.root);
+
+    }
+    private NodoAVL insert(Comparable x, NodoAVL t) {
         if (t == null) {
             return new NodoAVL(x);
         }
-        if (x < t.element) {
+        if (x.compareTo(t.element) < 0) {
             t.left = insert(x, t.left);
-        } else if (x > t.element) {
+        } else if (x.compareTo(t.element) > 0) {
             t.right = insert(x, t.right);
         }
         return balance(t);
