@@ -1,7 +1,14 @@
 package Ordenamiento;
 
+/**
+ * Bubblesort
+ */
 public class BubbleSort {
 
+    /**
+     * Metodo para acomodar los elementos utilizando el bubblesort
+     * @param arr
+     */
     public void sort(int arr[]) {
 
         int n = arr.length;

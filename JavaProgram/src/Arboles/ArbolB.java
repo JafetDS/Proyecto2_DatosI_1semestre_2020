@@ -1,21 +1,35 @@
 package Arboles;
 
-
+/**
+ *
+ * @param <T>
+ */
 public class ArbolB <T extends Comparable<? super T>> {
     private NodoA<T> root;
 
+    /**
+     * Construcyor del arbol binario
+     */
     public ArbolB() {
         this.root = null;
     }
 
+    /**
+     * Metodo para saber si el nodo esta vacio
+     * @return
+     */
     public boolean isEmpty() {
         return this.root == null;
     }
 
+    /**
+     * Metodo para saber si un elemento ya esta dentro del arbol
+     * @param element
+     * @return
+     */
     public boolean contains(T element) {
         return this.contains(element, this.root);
     }
-
     private boolean contains(T element, NodoA<T> node) {
         if (node == null) {
             return false;
@@ -30,10 +44,13 @@ public class ArbolB <T extends Comparable<? super T>> {
         }
     }
 
+    /**
+     * Metodo para insertar elementos dentro del arbol binario
+     * @param element
+     */
     public void insert(T element) {
         this.root = this.insert(element, this.root);
     }
-
     private NodoA<T> insert(T element, NodoA<T> node) {
         if (node == null)
             return new NodoA<T>(element, null, null);
@@ -45,10 +62,13 @@ public class ArbolB <T extends Comparable<? super T>> {
         return node;
     }
 
+    /**
+     * Metodo para eliminar elementos dentro del arbol binario
+     * @param element
+     */
     public void remove(T element) {
         this.root = this.remove(element, this.root);
     }
-
     private NodoA<T> remove(T element, NodoA<T> node) {
         if (node == null)
             return node;
@@ -71,6 +91,10 @@ public class ArbolB <T extends Comparable<? super T>> {
         return node;
     }
 
+    /**
+     * Metodo para encontrar el elemento mas pequeño dentro del arbol
+     * @return
+     */
     public T findMin() {
         if (this.isEmpty()) {
             return null;
@@ -78,15 +102,6 @@ public class ArbolB <T extends Comparable<? super T>> {
             return this.findMin(this.root).element;
         }
     }
-
-    public T findMax() {
-        if (this.isEmpty()) {
-            return null;
-        } else {
-            return this.findMax(this.root).element;
-        }
-    }
-
     private NodoA<T> findMin(NodoA<T> node) {
         if (node == null)
             return null;
@@ -96,6 +111,17 @@ public class ArbolB <T extends Comparable<? super T>> {
             return findMin(node.left);
     }
 
+    /**
+     * Metodo para encontrar el elemento mas grande dentro del arbol
+     * @return
+     */
+    public T findMax() {
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            return this.findMax(this.root).element;
+        }
+    }
     private NodoA<T> findMax(NodoA<T> node) {
         if (node!= null)
             while (node.right != null) {

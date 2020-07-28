@@ -1,7 +1,17 @@
 package Ordenamiento;
 
+/**
+ * QuickSort
+ */
 public class QuickSort {
 
+    /**
+     * Metodo para particionar la lista ingresada y hacerle quick sort
+     * @param arr
+     * @param low
+     * @param high
+     * @return
+     */
     int partition(int arr[], int low, int high) {
         int pivot = arr[high];
         int i = (low-1);
@@ -21,6 +31,10 @@ public class QuickSort {
         return i+1;
     }
 
+    /**
+     * Metodo para acomodar los elementos de una lista utilizando el quicksort
+     * @param arr
+     */
     public void sort(int arr[]) {
         this.sort(arr, 0, arr.length-1);
     }

@@ -1,5 +1,8 @@
 package Arboles;
 
+/**
+ * Arbol AVL
+ */
 public class NodoAVL {
 
     Comparable element;
@@ -7,6 +10,10 @@ public class NodoAVL {
     NodoAVL right;
     int height;
 
+    /**
+     * Constructor del arbol AVL
+     * @param element
+     */
     public NodoAVL(Comparable element) {
         this(element, null, null);
     }

@@ -2,8 +2,17 @@ package Ordenamiento;
 
 import java.util.Arrays;
 
+/**
+ * RadixSort
+ */
 public class RadixSort {
 
+    /**
+     * Metodo para encontrar el mayor elemento dentro de la lista ingresada
+     * @param arr
+     * @param n
+     * @return
+     */
     static int getMax(int arr[], int n) {
         int mx = arr[0];
         for (int i = 1; i < n; i++)
@@ -12,6 +21,10 @@ public class RadixSort {
         return mx;
     }
 
+    /**
+     * Metodo para acomodar la lista brindada por medio del RadixSort
+     * @param arr
+     */
     public void radixsort(int arr[]){
         this.radixsort(arr, arr.length);
     }
@@ -24,6 +37,9 @@ public class RadixSort {
         }
     }
 
+    /**
+     * Contador de decenas, centenas y unidades
+     */
     void countSort(int arr[], int n, int exp) {
         int output[] = new int[n]; // output array
         int i;
@@ -42,6 +58,10 @@ public class RadixSort {
             arr[i] = output[i];
     }
 
+    /**
+     * Metodo para imprimir los datos de una lista
+     * @param arr
+     */
     public void print(int arr[]){
         int n = arr.length;
         for (int i=0; i<n; i++)

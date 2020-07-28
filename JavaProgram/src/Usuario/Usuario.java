@@ -1,5 +1,8 @@
 package Usuario;
 
+/**
+ * Clase Usuario
+ */
 public class Usuario {
     String CorreoElectronico, Nombre, Apellidos, Edad, contraseña;
 

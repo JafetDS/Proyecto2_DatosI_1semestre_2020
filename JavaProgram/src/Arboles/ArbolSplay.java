@@ -1,16 +1,31 @@
 package Arboles;
 
+/**
+ *
+ * @param <T>
+ */
 public class ArbolSplay<T extends Comparable<? super T>> {
     private NodoSpaly root;
 
+    /**
+     * Constructor del arbol Splay
+     */
     public ArbolSplay() {
         this.root = null;
     }
 
+    /**
+     * Metodo para retornar la raiz del arbol Splay
+     * @return
+     */
     public Comparable findroot(){
         return this.root.key;
     }
 
+    /**
+     * Metodo para insertar elementos dentro del arbol Splay
+     * @param key
+     */
     public void insert(Comparable key) {
         NodoSpaly n;
         int c;
@@ -36,6 +51,10 @@ public class ArbolSplay<T extends Comparable<? super T>> {
         root = n;
     }
 
+    /**
+     * Metodo para eliminar elementos dentro del arbol Splay
+     * @param key
+     */
     public void remove(Comparable key) {
         NodoSpaly x;
         splay(key);
@@ -54,6 +73,10 @@ public class ArbolSplay<T extends Comparable<? super T>> {
         }
     }
 
+    /**
+     * Metodo para encontrar el elemento menor
+     * @return
+     */
     public Comparable findMin() {
         NodoSpaly x = root;
         if(root == null) return null;
@@ -62,6 +85,10 @@ public class ArbolSplay<T extends Comparable<? super T>> {
         return x.key;
     }
 
+    /**
+     * Metodo para encontrar el mayor elemento
+     * @return
+     */
     public Comparable findMax() {
         NodoSpaly x = root;
         if(root == null) return null;
@@ -70,6 +97,11 @@ public class ArbolSplay<T extends Comparable<? super T>> {
         return x.key;
     }
 
+    /**
+     * Metodo para encontrar un elemento en especifico
+     * @param key
+     * @return
+     */
     public Comparable find(Comparable key) {
         if (root == null) return null;
         splay(key);
@@ -77,11 +109,19 @@ public class ArbolSplay<T extends Comparable<? super T>> {
         return root.key;
     }
 
+    /**
+     * Metodo para verificar si el nodo donde se encuentra esta vacio
+     * @return
+     */
     public boolean isEmpty() {
         return root == null;
     }
 
 
+    /**
+     * Metodo para pocisionar un nodo en especifico como raiz
+     * @param key
+     */
     public void moveToRoot(Comparable key) {
         NodoSpaly l, r, t, y;
         l = r = header;
@@ -90,42 +130,31 @@ public class ArbolSplay<T extends Comparable<? super T>> {
         for (;;) {
             if (key.compareTo(t.key) < 0) {
                 if (t.left == null) break;
-                r.left = t;                                 /* link right */
+                r.left = t;
                 r = t;
                 t = t.left;
             } else if (key.compareTo(t.key) > 0) {
                 if (t.right == null) break;
-                l.right = t;                                /* link left */
+                l.right = t;
                 l = t;
                 t = t.right;
             } else {
                 break;
             }
         }
-        l.right = t.left;                                   /* assemble */
+        l.right = t.left;
         r.left = t.right;
         t.left = header.right;
         t.right = header.left;
         root = t;
     }
 
-    private static NodoSpaly header = new NodoSpaly(null); // For splay
+    private static NodoSpaly header = new NodoSpaly(null);
 
     /**
-     * Internal method to perform a top-down splay.
-     *
-     *   splay(key) does the splay operation on the given key.
-     *   If key is in the tree, then the BinaryNode containing
-     *   that key becomes the root.  If key is not in the tree,
-     *   then after the splay, key.root is either the greatest key
-     *   < key in the tree, or the lest key > key in the tree.
-     *
-     *   This means, among other things, that if you splay with
-     *   a key that's larger than any in the tree, the rightmost
-     *   node of the tree becomes the root.  This property is used
-     *   in the delete() method.
+     * Metodo para hacerle splay al arbol
+     * @param key
      */
-
     public void splay(Comparable key) {
         NodoSpaly l, r, t, y;
         l = r = header;
@@ -135,32 +164,32 @@ public class ArbolSplay<T extends Comparable<? super T>> {
             if (key.compareTo(t.key) < 0) {
                 if (t.left == null) break;
                 if (key.compareTo(t.left.key) < 0) {
-                    y = t.left;                            /* rotate right */
+                    y = t.left;
                     t.left = y.right;
                     y.right = t;
                     t = y;
                     if (t.left == null) break;
                 }
-                r.left = t;                                 /* link right */
+                r.left = t;
                 r = t;
                 t = t.left;
             } else if (key.compareTo(t.key) > 0) {
                 if (t.right == null) break;
                 if (key.compareTo(t.right.key) > 0) {
-                    y = t.right;                            /* rotate left */
+                    y = t.right;
                     t.right = y.left;
                     y.left = t;
                     t = y;
                     if (t.right == null) break;
                 }
-                l.right = t;                                /* link left */
+                l.right = t;
                 l = t;
                 t = t.right;
             } else {
                 break;
             }
         }
-        l.right = t.left;                                   /* assemble */
+        l.right = t.left;
         r.left = t.right;
         t.left = header.right;
         t.right = header.left;

@@ -1,10 +1,18 @@
 package Arboles;
 
+/**
+ *
+ * @param <T>
+ */
 public class NodoA <T> {
     T element;
     NodoA<T> left;
     NodoA<T> right;
 
+    /**
+     * Constructor del nodoA
+     * @param element
+     */
     public NodoA(T element) {
         this(element, null, null);
     }
