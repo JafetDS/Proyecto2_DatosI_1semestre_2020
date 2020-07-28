@@ -9,10 +9,36 @@
              x:Class="P2XChef.Views.Newsfeed">
     <ContentPage.Content>
         <StackLayout
-           BindingContext="{Binding Newsfeed}" >
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+           BindingContext="{Binding Newsfeed}" 
+           Padding="5">
+            <SearchBar 
+                Text="{Binding Filter, Mode=TwoWay}"
+                Placeholder="Buscar"
+                SearchCommand="{Binding SearchCommand}">
+                
+            </SearchBar>
+            <ListView ItemsSource="{Binding Users}"
+                      HasUnevenRows="False"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    Text="{Binding nombre}"
+                                    TextColor="Black">
+                                </Label>
+                            </StackLayout>
+                        </ViewCell>                                           
+                    </DataTemplate>
+                    
+                    
+                </ListView.ItemTemplate>
+                
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
